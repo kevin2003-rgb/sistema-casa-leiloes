@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
 
+
 public class TelaVendas extends javax.swing.JFrame {
 
     /**
