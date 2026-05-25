@@ -38,6 +38,23 @@ public class ProdutosDAO {
         JOptionPane.showMessageDialog(null, e);
     }
 }
+    public ResultSet listarProdutosVendidos() {
+   Connection conn = new conectaDAO().connectDB();
+
+    String sql = "SELECT * FROM produtos WHERE status='Vendido'";
+
+    try {
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        return pst.executeQuery();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+        return null;
+    }
+}
+    
+    
     
     
     
