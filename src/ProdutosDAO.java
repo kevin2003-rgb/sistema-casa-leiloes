@@ -1,12 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author Adm
- */
 
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -29,6 +21,42 @@ public class ProdutosDAO {
         
         
     }
+    
+    public void venderProduto(int id) {
+    String sql = "UPDATE produtos SET status='Vendido' WHERE id=?";
+
+    try {
+        conn = new conectaDAO().connectDB();
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        pst.setInt(1, id);
+
+        pst.execute();
+        pst.close();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+}
+    public ResultSet listarProdutosVendidos() {
+   Connection conn = new conectaDAO().connectDB();
+
+    String sql = "SELECT * FROM produtos WHERE status='Vendido'";
+
+    try {
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        return pst.executeQuery();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+        return null;
+    }
+}
+    
+    
+    
+    
     
     public ArrayList<ProdutosDTO> listarProdutos() {
 
